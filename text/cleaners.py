@@ -98,3 +98,11 @@ def english_cleaners2(text):
   phonemes = phonemize(text, language='en-us', backend='espeak', strip=True, preserve_punctuation=True, with_stress=True)
   phonemes = collapse_whitespace(phonemes)
   return phonemes
+
+def spanish_cleaners(text):
+  '''Pipeline for Spanish text (using phonemes)'''
+  text = convert_to_ascii(text)
+  phonemes = phonemize(text, language='es', backend='espeak', strip=True, preserve_punctuation=True, with_stress=True, punctuation_marks = ';:,.!?¡¿—…"«»“”()', language_switch='remove-flags')
+  phonemes = collapse_whitespace(phonemes)
+  phonemes = phonemes.strip()
+  return phonemes
