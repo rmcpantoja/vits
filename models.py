@@ -523,7 +523,7 @@ class SynthesizerTrn(nn.Module):
     return o, attn, y_mask, (z, z_p, m_p, logs_p)
 
   def voice_conversion(self, y, y_lengths, sid_src, sid_tgt):
-    assert self.n_speakers > 0, "n_speakers have to be larger than 0."
+    #assert self.n_speakers > 0, "n_speakers have to be larger than 0."
     g_src = self.emb_g(sid_src).unsqueeze(-1)
     g_tgt = self.emb_g(sid_tgt).unsqueeze(-1)
     z, m_q, logs_q, y_mask = self.enc_q(y, y_lengths, g=g_src)
